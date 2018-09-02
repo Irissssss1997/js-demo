@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js calculator</title>
+</head>
+<body>
+	<div>
+		第一个数字：<input type="text" id="num1">
+		<br/>
+		第二个数字：<input type="text" id="num2">
+		<br/>
+		<button id="add">+</button>
+		<button id="sub">-</button>
+		<button id="mul">×</button>
+		<button id="div">÷</button>
+		<br/>
+		结果是：<p id="re"></p>
+	</div>
+	<script type="text/javascript">
+
+	var addbtn=document.getElementById('add');
+	var subbtn=document.getElementById('sub');
+	var mulbtn=document.getElementById('mul');
+	var divbtn=document.getElementById('div');
+	//获取按钮
+	var show=document.getElementById('re');
+	var result;
+	//显示结果
+	
+	function addition(a,b){
+		return a+b;
+	}
+	function subtraction(a,b){
+		return a-b;
+	}
+	function multiplication(a,b){
+		return a*b;
+	}
+	function division(a,b){
+		if(b==0){
+			alert("0不能做除数");
+			return null;
+		}else{
+			return a/b;
+		}
+	}
+
+	addbtn.onclick=function(){
+		var a=document.getElementById('num1').value;
+		var b=document.getElementById('num2').value;
+		var a_float=parseFloat(a);
+		var b_float=parseFloat(b);
+		result=addition(a_float,b_float);
+		show.innerHTML=result;
+	}
+	subbtn.onclick=function(){
+		var a=document.getElementById('num1').value;
+		var b=document.getElementById('num2').value;
+		var a_float=parseFloat(a);
+		var b_float=parseFloat(b);
+		result=subtraction(a_float,b_float);
+		show.innerHTML=result;
+	}
+	mulbtn.onclick=function(){
+		var a=document.getElementById('num1').value;
+		var b=document.getElementById('num2').value;
+		var a_float=parseFloat(a);
+		var b_float=parseFloat(b);
+		result=multiplication(a_float,b_float);
+		show.innerHTML=result;
+	}
+	divbtn.onclick=function(){
+		var a=document.getElementById('num1').value;
+		var b=document.getElementById('num2').value;
+		var a_float=parseFloat(a);
+		var b_float=parseFloat(b);
+		result=division(a_float,b_float);
+		show.innerHTML=result;
+	}
+	</script>
+</body>
+</html>
