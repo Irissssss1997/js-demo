@@ -46,35 +46,30 @@
 		}
 	}
 
-	addbtn.onclick=function(){
+	function getInputNums(){
 		var a=document.getElementById('num1').value;
 		var b=document.getElementById('num2').value;
 		var a_float=parseFloat(a);
 		var b_float=parseFloat(b);
+	}
+	
+	addbtn.onclick=function(){
+		getInputNums();
 		result=addition(a_float,b_float);
 		show.innerHTML=result;
 	}
 	subbtn.onclick=function(){
-		var a=document.getElementById('num1').value;
-		var b=document.getElementById('num2').value;
-		var a_float=parseFloat(a);
-		var b_float=parseFloat(b);
+		getInputNums();
 		result=subtraction(a_float,b_float);
 		show.innerHTML=result;
 	}
 	mulbtn.onclick=function(){
-		var a=document.getElementById('num1').value;
-		var b=document.getElementById('num2').value;
-		var a_float=parseFloat(a);
-		var b_float=parseFloat(b);
+		getInputNums();
 		result=multiplication(a_float,b_float);
 		show.innerHTML=result;
 	}
 	divbtn.onclick=function(){
-		var a=document.getElementById('num1').value;
-		var b=document.getElementById('num2').value;
-		var a_float=parseFloat(a);
-		var b_float=parseFloat(b);
+		getInputNums();
 		result=division(a_float,b_float);
 		show.innerHTML=result;
 	}
