@@ -45,7 +45,7 @@
 			outline:none;
 			background-color:#98d1dc;
 			box-shadow:inset 6px 6px 0px #3facc0;
-			color:#dededc;
+			color:white;
 			font-size:20px;
 			height:47px;
 			text-align: right;
@@ -84,7 +84,7 @@
 <body>
 	<h1>html\css\js 计算器</h1>
 	<form>
-		<input type="buttton" id="clear" class="btn other" value="C">
+		<input type="button" id="clear" class="btn other" value="C">
 		<input type="button" id="delete" class="btn other" value="D">
 		<input type="text" id="display">
 		<br/>
@@ -104,68 +104,64 @@
 		<input type="button" class="btn operator" value="-" onclick="get(this.value);">
 		<br/>
 		<input type="button" class="btn number" value="0" onclick="get(this.value);" >
-		<input type="button" class="btn number" value="." onclick="get(this.value);" >
-		<input type="button" class="btn number" value="/" onclick="get(this.value);" >
+		<input type="button" class="btn operator" value="." onclick="get(this.value);" >
+		<input type="button" class="btn operator" value="/" onclick="get(this.value);" >
 		<input type="button" class="btn other" value="=" id="cal">
 	</form>
 	<p align="center" id="time"></p>
-
-
-	<script type="text/javascript">
-
-	/*var addbtn=document.getElementById('add');
-	var subbtn=document.getElementById('sub');
-	var mulbtn=document.getElementById('mul');
-	var divbtn=document.getElementById('div');
-	//获取按钮
-	var show=document.getElementById('re');
-	var result;
-	//显示结果
 	
-	function addition(a,b){
-		return a+b;
-	}
-	function subtraction(a,b){
-		return a-b;
-	}
-	function multiplication(a,b){
-		return a*b;
-	}
-	function division(a,b){
-		if(b==0){
-			alert("0不能做除数");
-			return null;
-		}else{
-			return a/b;
+	<script type="text/javascript">
+	//计算过程显示
+	function get(num){
+		var shownums=document.getElementById("display");
+		shownums.value+=num;
 		}
+	//清空
+	var cc=document.getElementById('clear');
+	function clear(){
+		document.getElementById("display").value="";
 	}
-
-	function getInputNums(){
-		var a=document.getElementById('num1').value;
-		var b=document.getElementById('num2').value;
-		a_float=parseFloat(a);
-		b_float=parseFloat(b);
+	cc.addEventListener("click",clear,false);
+	//回删
+	var dd=document.getElementById("delete");
+	function backspace(){
+		var shownums=document.getElementById('display');
+		shownums.value=shownums.value.substring(0,shownums.value.length-1);
 	}
-
-	addbtn.onclick=function(){
-		getInputNums();
-		result=addition(a_float,b_float);
-		show.innerHTML=result;
+	dd.addEventListener("click",backspace,false);
+	//计算
+	var re=document.getElementById("cal");
+	function calculates(){
+		var result=0;
+		result=document.getElementById("display").value;
+		document.getElementById("display").value=eval(result);
 	}
-	subbtn.onclick=function(){
-		getInputNums();
-		result=subtraction(a_float,b_float);
-		show.innerHTML=result;
+	re.addEventListener("click",calculates,false);
+	//显示时间
+	function showTime(){
+		var today=new Date();
+		var y=today.getFullYear();
+		var M=today.getMonth()+1;
+		var d=today.getDate();
+		var h=today.getHours();
+		var m=today.getMinutes();
+		var s=today.getSeconds();
+		m=checkTime(m);
+		s=checkTime(s);
+		var week=today.getDay();
+		var w=new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
+			document.getElementById("time").innerHTML=y+"年"+M+"月"+d+"日"+"<br/>"+h+":"+m+":"+s+"   "+w[week];
+		setTimeout("showTime()",1000);
 	}
-	mulbtn.onclick=function(){
-		getInputNums();
-		result=multiplication(a_float,b_float);
-		show.innerHTML=result;
+	//数字小于十时，在前面加个零
+	function checkTime(i){
+		if(i<10){
+			i="0"+i;
+		}
+		return i;
 	}
-	divbtn.onclick=function(){
-		getInputNums();
-		result=division(a_float,b_float);
-		show.innerHTML=result;
+	window.onload=function(){
+		showTime();
 	}
 	</script>
 </body>
